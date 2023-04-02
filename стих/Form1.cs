@@ -55,8 +55,73 @@ namespace стих
             {
                 string path = openFileDialog1.FileName;
                 string text = File.ReadAllText(path);
-                text = text.ToUpper();
+                for (int i = 0; i < text.Length; i++)
+                {
+                   
+                    if (Char.IsPunctuation(text[i]))
+                    {
+                        
+                        text = text.Remove(i, 2);
+                        
+                    }
+                }
                 File.WriteAllText(path, text);
+
+
+
+                try
+                {
+                    FileStream file = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+                    StreamReader reder = new StreamReader(file);
+                    try
+                    {
+                        while (!reder.EndOfStream)
+                        {
+                            textBox1.Text += reder.ReadLine();
+                        }
+                    }
+                    catch (IOException ex)
+                    {
+                        MessageBox.Show("ошибка при отткрытии вайла ", "ошибка ");
+                    }
+
+                }
+                catch (ArgumentException argEx)
+                {
+                    MessageBox.Show("Ошибка при открытии файла ", "ошибка ");
+                }
+
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Сохранить фаил ";
+            openFileDialog1.FileName = "Test.txt";
+            openFileDialog1.Filter = "TXT FILES|*.txt|ALL FILLES |*.*";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = openFileDialog1.FileName;
+                string text = File.ReadAllText(path);
+                for (int i = 0; i < text.Length; i++)
+                {
+
+                    if (Char.IsPunctuation(text[i]))
+                    {
+
+                        text = text.Remove(i);
+
+                    }
+                }
+                File.WriteAllText(path, text);
+                if (text.Contains(" "))
+                {
+                    text = text.Trim();
+                    
+                }
+
+
 
                 try
                 {

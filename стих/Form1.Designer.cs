@@ -64,7 +64,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(308, 192);
             this.textBox1.TabIndex = 2;
-          
             // 
             // openFileDialog1
             // 
@@ -76,9 +75,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(158, 23);
             this.button3.TabIndex = 3;
-            this.button3.Text = "заполнить  1000 цифрами ";
+            this.button3.Text = "поченить текст ";
             this.button3.UseVisualStyleBackColor = true;
-           
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
